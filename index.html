@@ -3,25 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rock Paper Scissors Game</title>
+  <title>Cyber Rock Paper Scissors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="background-effects">
+    <div class="grid-overlay"></div>
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
+
   <div class="game-container">
-    <h1>Rock Paper Scissors</h1>
-    
-    <div class="score-board">
-      <div>👤 You: <span id="user-score">0</span></div>
-      <div>🤖 Computer: <span id="computer-score">0</span></div>
+    <header class="game-header">
+      <h1 class="game-title">
+        <span class="glitch-text" data-text="CYBER RPS">CYBER RPS</span>
+      </h1>
+      <div class="subtitle">Neural Combat Simulator v2.1</div>
+    </header>
+
+    <div class="stats-panel">
+      <div class="stat-card player-stats">
+        <div class="stat-icon">👤</div>
+        <div class="stat-info">
+          <div class="stat-label">PLAYER</div>
+          <div class="stat-value" id="user-score">0</div>
+          <div class="stat-streak">Streak: <span id="user-streak">0</span></div>
+        </div>
+      </div>
+      
+      <div class="versus-indicator">
+        <div class="vs-text">VS</div>
+        <div class="battle-line"></div>
+      </div>
+      
+      <div class="stat-card ai-stats">
+        <div class="stat-icon">🤖</div>
+        <div class="stat-info">
+          <div class="stat-label">AI CORE</div>
+          <div class="stat-value" id="computer-score">0</div>
+          <div class="stat-streak">Streak: <span id="computer-streak">0</span></div>
+        </div>
+      </div>
     </div>
 
-    <div class="choices">
-      <button class="choice" data-choice="rock">✊ Rock</button>
-      <button class="choice" data-choice="paper">✋ Paper</button>
-      <button class="choice" data-choice="scissors">✌️ Scissors</button>
+    <div class="battle-arena">
+      <div class="player-choice-display">
+        <div class="choice-preview" id="player-preview">
+          <div class="preview-text">Select Weapon</div>
+        </div>
+      </div>
+      
+      <div class="vs-separator">
+        <div class="energy-beam"></div>
+      </div>
+      
+      <div class="ai-choice-display">
+        <div class="choice-preview" id="ai-preview">
+          <div class="preview-text">AI Thinking...</div>
+        </div>
+      </div>
     </div>
 
-    <div class="result" id="result">Make your move!</div>
+    <div class="weapon-selection">
+      <button class="weapon-btn" data-choice="rock" data-damage="heavy">
+        <div class="weapon-icon">🗿</div>
+        <div class="weapon-name">ROCK</div>
+        <div class="weapon-type">CRUSHER</div>
+      </button>
+      
+      <button class="weapon-btn" data-choice="paper" data-damage="light">
+        <div class="weapon-icon">📄</div>
+        <div class="weapon-name">PAPER</div>
+        <div class="weapon-type">WRAPPER</div>
+      </button>
+      
+      <button class="weapon-btn" data-choice="scissors" data-damage="medium">
+        <div class="weapon-icon">✂️</div>
+        <div class="weapon-name">SCISSORS</div>
+        <div class="weapon-type">SLICER</div>
+      </button>
+    </div>
+
+    <div class="result-display">
+      <div class="result-text" id="result">INITIALIZE COMBAT PROTOCOL</div>
+      <div class="result-details" id="result-details"></div>
+    </div>
+
+    <div class="game-controls">
+      <button class="control-btn" id="reset-btn">
+        <span>RESET MATRIX</span>
+      </button>
+      <button class="control-btn" id="stats-btn">
+        <span>VIEW ANALYTICS</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="modal" id="stats-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>COMBAT ANALYTICS</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="analytics-grid">
+          <div class="analytics-item">
+            <div class="analytics-label">Total Battles</div>
+            <div class="analytics-value" id="total-games">0</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">Win Rate</div>
+            <div class="analytics-value" id="win-rate">0%</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">Favorite Weapon</div>
+            <div class="analytics-value" id="favorite-weapon">None</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">Max Streak</div>
+            <div class="analytics-value" id="max-streak">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
